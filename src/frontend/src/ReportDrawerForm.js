@@ -39,15 +39,14 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
   const onFinish = (report) => {
     setSubmitting(true)
 
-    // reloads from server instead of cache
-    window.location.reload(true)
     console.log(JSON.stringify(report, null, 2))
     addNewReport(report)
       .then(() => {
         onClose()
         successNotification(
           'Report successfully added',
-          `${report.name} was added to the system`
+          `${report.address} was added to the system`,
+          'bottomRight'
         )
         fetchReports()
       })
