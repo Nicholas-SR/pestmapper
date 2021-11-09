@@ -80,7 +80,7 @@ function App() {
   }
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.local.REACT_APP_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries
   })
 
