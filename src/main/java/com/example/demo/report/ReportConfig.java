@@ -4,6 +4,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.List;
+
 @Configuration
 public class ReportConfig {
     @Bean
@@ -54,7 +56,7 @@ public class ReportConfig {
             );
             // Uncomment below to add fake users to the table
             // You'll have to comment it again after the first run because it will cause an error since you would be adding elements that already exist
-            //repository.saveAll(List.of(report1,report2,report3));
+            //repository.saveAll(List.of(report1, report2, report3));
         };
     }
 }
