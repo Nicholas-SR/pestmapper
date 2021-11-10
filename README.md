@@ -1,6 +1,7 @@
 # Pest Mapper
+Stack: ReactJS, Java, Spring Boot, RESTful API, PostgreSQL
 
-* A RESTful web service platform where building occupants can report pest incidents as a means of warning prospective tenants.
+* An online platform where building occupants can report pest incidents to warn prospective tenants.
 
 * Reports are plotted on an interactive map created with the Google Maps API.
 
