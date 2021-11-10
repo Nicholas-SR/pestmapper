@@ -1,5 +1,5 @@
 # Pest Mapper
-Stack: ReactJS, Java, Spring Boot, RESTful API, PostgreSQL, Amazon RDS
+Built with: ReactJS, Java, Spring Boot, RESTful API, PostgreSQL, Amazon RDS
 
 * An online platform where building occupants can report pest incidents to warn prospective tenants.
 
