@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import { getAllReports } from './client'
 import { errorNotification } from './Notification'
-import { v4 as uuidv4 } from 'uuid'
 import ReportDrawerForm from './ReportDrawerForm'
 import moment from 'moment'
 import {
@@ -10,20 +9,10 @@ import {
   Marker,
   InfoWindow
 } from '@react-google-maps/api'
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng
-} from 'use-places-autocomplete'
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption
-} from '@reach/combobox'
 import '@reach/combobox/styles.css'
 import { libraries, mapContainerStyle, options, center } from './mapStyles.js'
 import './App.css'
+import Search from './Search'
 
 function App() {
   const [reportsData, setReportsData] = useState([])
@@ -149,7 +138,7 @@ function App() {
           top: '0.5rem'
         }}
       />
-      <Search panTo={panTo} />
+      <Search panTo={panTo} placeholder={'Search city or address'} />
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
@@ -198,61 +187,6 @@ function App() {
           </InfoWindow>
         ) : null}
       </GoogleMap>
-    </div>
-  )
-}
-
-const Search = ({ panTo }) => {
-  const {
-    ready,
-    value,
-    suggestions: { status, data },
-    setValue,
-    clearSuggestions
-  } = usePlacesAutocomplete({
-    requestOptions: {
-      // this sets the search to be within this radius, its centered around hamilton
-      location: { lat: () => 43.6532, lng: () => -79.3832 },
-      radius: 100 * 1000
-    }
-  })
-
-  const handleInput = (e) => {
-    setValue(e.target.value)
-  }
-
-  const handleSelect = async (address) => {
-    setValue(address)
-    clearSuggestions()
-
-    try {
-      const results = await getGeocode({ address })
-
-      const { lat, lng } = await getLatLng(results[0])
-      panTo({ lat, lng })
-    } catch (error) {
-      console.log('Error: ', error)
-    }
-  }
-
-  return (
-    <div className="search">
-      <Combobox onSelect={handleSelect}>
-        <ComboboxInput
-          value={value}
-          onChange={handleInput}
-          disabled={!ready}
-          placeholder="Search city or address"
-        />
-        <ComboboxPopover>
-          <ComboboxList>
-            {status === 'OK' &&
-              data.map(({ id, description }) => (
-                <ComboboxOption key={uuidv4()} value={description} />
-              ))}
-          </ComboboxList>
-        </ComboboxPopover>
-      </Combobox>
     </div>
   )
 }

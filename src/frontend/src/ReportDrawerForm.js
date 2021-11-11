@@ -3,18 +3,7 @@ import { addNewReport } from './client'
 import { LoadingOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import { successNotification, errorNotification } from './Notification'
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng
-} from 'use-places-autocomplete'
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption
-} from '@reach/combobox'
-import { v4 as uuidv4 } from 'uuid'
+import Search from './Search'
 
 const { Option } = Select
 
@@ -187,6 +176,7 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
                 setLat={setLat}
                 setLng={setLng}
                 setPlaceId={setPlaceId}
+                placeholder={'Please enter your address'}
               />
             </Form.Item>
           </Col>
@@ -262,67 +252,3 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
 }
 
 export default ReportDrawerForm
-
-const Search = (props) => {
-  const {
-    ready,
-    value,
-    suggestions: { status, data },
-    setValue,
-    clearSuggestions
-  } = usePlacesAutocomplete({
-    requestOptions: {
-      // this sets the search to be within this radius, its around hamilton
-      location: { lat: () => 43.6532, lng: () => -79.3832 },
-      radius: 100 * 1000
-    }
-  })
-
-  const handleInput = (e) => {
-    setValue(e.target.value)
-  }
-
-  const handleSelect = async (address) => {
-    setValue(address)
-    props.setAddress(address)
-    clearSuggestions()
-
-    try {
-      const results = await getGeocode({ address })
-      const placeId = results[0].place_id
-      const { lat, lng } = await getLatLng(results[0])
-      props.setLat(lat)
-      props.setLng(lng)
-      props.setPlaceId(placeId)
-    } catch (error) {
-      console.log('Error: ', error)
-    }
-  }
-
-  return (
-    <div className="search">
-      <Combobox onSelect={handleSelect}>
-        <ComboboxInput
-          value={value}
-          onChange={handleInput}
-          disabled={!ready}
-          placeholder="Please enter your address"
-          style={{
-            maxHeight: '32px',
-            fontSize: '15px',
-            top: '-16px',
-            position: 'relative'
-          }}
-        />
-        <ComboboxPopover style={{ zIndex: '12' }}>
-          <ComboboxList>
-            {status === 'OK' &&
-              data.map(({ id, description }) => (
-                <ComboboxOption key={uuidv4()} value={description} />
-              ))}
-          </ComboboxList>
-        </ComboboxPopover>
-      </Combobox>
-    </div>
-  )
-}
