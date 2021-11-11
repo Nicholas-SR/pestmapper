@@ -115,30 +115,36 @@ function App() {
   if (!isLoaded) return 'Loading'
 
   return (
-        
     <div>
-        <div class="header">
+      <div class="header">
+        <img
+          src={'/logo.svg'}
+          alt="Logo"
+          style={{
+            width: '90px',
+            padding: '0px'
+          }}
+        />
 
-          <img
-            src={'/logo.svg'}
-            alt="Logo"
-            style={{
-              width: '90px',
-              padding: '0px'
-            }}
-          />
+        <a href="#default" class="logo">
+          Pest <br />
+          Mapper
+        </a>
+        <a className="pages" href="#map">
+          Map
+        </a>
+        <a className="pages" href="#resources">
+          Resources
+        </a>
+        <a className="pages" href="#about">
+          About
+        </a>
 
-          <a href="#default" class="logo">Pest <br/>Mapper</a>
-          <a className="pages" href="#map">Map</a>
-          <a className="pages" href="#resources">Resources</a>
-          <a className="pages" href="#about">About</a>
+        <Search panTo={panTo} placeholder={'Search City or Address'} />
 
-          <Search panTo={panTo} placeholder={'Search City or Address'} />
-
-          <button className="btn" onClick={() => setShowDrawer(!showDrawer)}>
-            Report Pest
-          </button>
-
+        <button className="btn" onClick={() => setShowDrawer(!showDrawer)}>
+          Report Pest
+        </button>
       </div>
 
       <ReportDrawerForm
@@ -180,9 +186,7 @@ function App() {
             <div>
               <h3>{selectedPlace.address}</h3>
               <p>{moment(selectedPlace.date).format('MMMM d, YYYY')}</p>
-              <p>
-                {selectedPlace.name}: {selectedPlace.comment}
-              </p>
+
               <p>Severity: {selectedPlace.score}/5</p>
               <p>
                 Bug Type:{' '}
@@ -191,6 +195,9 @@ function App() {
                     ? 'Bedbugs'
                     : 'Cockroaches'
                   : 'Bedbugs & Cockroaches'}
+              </p>
+              <p style={{ maxWidth: '400px' }}>
+                {selectedPlace.name}: {selectedPlace.comment}
               </p>
             </div>
           </InfoWindow>

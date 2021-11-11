@@ -59,6 +59,7 @@ const Search = (props) => {
           disabled={!ready}
           placeholder={props.placeholder}
           style={props.style}
+          maxLength={255}
         />
         <ComboboxPopover style={{ zIndex: '12' }}>
           <ComboboxList>

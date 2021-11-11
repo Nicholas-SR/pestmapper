@@ -106,7 +106,7 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
               label="Name"
               rules={[{ required: true, message: 'Please enter your name' }]}
             >
-              <Input placeholder="Please enter report name" />
+              <Input placeholder="Please enter your name" maxLength={255} />
             </Form.Item>
           </Col>
           <Col span={12}>
@@ -115,7 +115,7 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
               label="Email"
               rules={[{ required: true, message: 'Please enter your email' }]}
             >
-              <Input placeholder="Please enter report email" />
+              <Input placeholder="Please enter your email" maxLength={255} />
             </Form.Item>
           </Col>
         </Row>
@@ -194,7 +194,11 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
               label="Comment"
               rules={[{ required: true, message: 'Please enter a comment' }]}
             >
-              <TextArea rows={4} placeholder="Please enter a comment" />
+              <TextArea
+                rows={4}
+                placeholder="Please enter a comment"
+                maxLength={2040}
+              />
             </Form.Item>
             <Form.Item
               name="lat"
