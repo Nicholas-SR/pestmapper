@@ -95,10 +95,7 @@ function App() {
       mapRef.current.setZoom(14)
       panTo({ lat: marker.lat, lng: marker.lng })
     }
-
-    if (selected) {
-      setSelected(false)
-    }
+    selected && setSelected(false)
     setSelectedPlace(marker)
     setSelected(true)
   }
@@ -146,6 +143,7 @@ function App() {
         center={center}
         options={options}
         onLoad={onMapLoad}
+        onClick={() => setSelected(false)}
       >
         {markers.map((marker) => (
           <Marker

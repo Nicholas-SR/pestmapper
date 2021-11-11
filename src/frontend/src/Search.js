@@ -33,7 +33,7 @@ const Search = (props) => {
   }
 
   const handleSelect = async (address) => {
-    if (props.setAddress) props.setAddress(address)
+    props.setAddress && props.setAddress(address)
     setValue(address)
     clearSuggestions()
 
@@ -41,10 +41,10 @@ const Search = (props) => {
       const results = await getGeocode({ address })
       const placeId = results[0].place_id
       const { lat, lng } = await getLatLng(results[0])
-      if (props.panTo) props.panTo({ lat, lng })
-      if (props.setLat) props.setLat(lat)
-      if (props.setLng) props.setLng(lng)
-      if (props.setPlaceId) props.setPlaceId(placeId)
+      props.panTo && props.panTo({ lat, lng })
+      props.setLat && props.setLat(lat)
+      props.setLng && props.setLng(lng)
+      props.setPlaceId && props.setPlaceId(placeId)
     } catch (error) {
       console.log('Error: ', error)
     }
