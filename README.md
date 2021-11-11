@@ -3,6 +3,8 @@
 
 * Reports are plotted on an interactive map created with the Google Maps API.
 
+* RESTful API built with Spring Boot and PostgreSQL.
+
 * Built with: ReactJS, Java, Spring Boot, RESTful API, PostgreSQL, Amazon RDS.
 
 * Logo made by [@mishmort](https://github.com/mishmort)
