@@ -10,3 +10,5 @@
 * Logo made by [@mishmort](https://github.com/mishmort)
 
 ![gif](demo.gif)
+
+![image](img.png)
