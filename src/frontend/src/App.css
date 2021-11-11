@@ -1,21 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap');
+
+body {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
 .btn {
-  -webkit-border-radius: 4;
-  -moz-border-radius: 4;
-  border-radius: 4px;
-  font-family: Arial;
   color: #ffffff;
-  font-size: 34px;
+  font-size: 25px;
   background: #ff5e45;
-  padding: 15px 25px 15px 25px;
-  border: solid #050505 2px;
+  padding: 10px 25px; 
+  border: none;
   text-decoration: none;
-  position: absolute;
   z-index: 11;
-  right: 0.5rem;
-  top: 0.5rem;
+  margin-top: 15px;
+  float: right;
+  font-family: 'Open Sans Condensed', sans-serif;
+  display:inline;
 }
 
 .btn:hover {
   background: #d6587a;
   text-decoration: none;
 }
+
+
+
+.header {
+  overflow: hidden;
+  background-color: white;
+  border-bottom: 8px solid #ff5e45;
+  padding: 25px 10px;
+}
+
+
+
+.header a, .header img{
+  float: left;
+  color: #ff5e45;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+
+.header a.logo {
+  font-size: 45px;
+  font-weight: bold;
+  text-align: left;
+  line-height: 35px;
+  margin-right: 20px;
+}
+
+.pages {
+  margin-top: 25px;
+}
+
+.search {
+  max-width: 500px;
+  margin-top: 10px;
+  z-index: 10;
+  display: inline;
+  max-height: 32px;
+  font-size: 15px;
+  top: 35px;
+  position: absolute;
+}
+
+.search input {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  width: 100%;
+  background-color: white;
+  color: #ff5e45;
+  border: 1px solid #ff5e45;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 500px) {
+  .header a, .btn, .search, .header img{
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .search {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .search input {
+    width: 100%;
+  }
+}
+
+

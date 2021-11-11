@@ -115,27 +115,38 @@ function App() {
   if (!isLoaded) return 'Loading'
 
   return (
+        
     <div>
+        <div class="header">
+
+          <img
+            src={'/logo.svg'}
+            alt="Logo"
+            style={{
+              width: '90px',
+              padding: '0px'
+            }}
+          />
+
+          <a href="#default" class="logo">Pest <br/>Mapper</a>
+          <a className="pages" href="#map">Map</a>
+          <a className="pages" href="#resources">Resources</a>
+          <a className="pages" href="#about">About</a>
+
+          <Search panTo={panTo} placeholder={'Search City or Address'} />
+
+          <button className="btn" onClick={() => setShowDrawer(!showDrawer)}>
+            Report Pest
+          </button>
+
+      </div>
+
       <ReportDrawerForm
         showDrawer={showDrawer}
         setShowDrawer={setShowDrawer}
         fetchReports={fetchReports}
       />
-      <button className="btn" onClick={() => setShowDrawer(!showDrawer)}>
-        Report Pest
-      </button>
-      <img
-        src={'/logo.png'}
-        alt="Logo"
-        style={{
-          zIndex: '10',
-          width: '300px',
-          position: 'absolute',
-          left: '0.5rem',
-          top: '0.5rem'
-        }}
-      />
-      <Search panTo={panTo} placeholder={'Search city or address'} />
+
       <GoogleMap
         id="map"
         mapContainerStyle={mapContainerStyle}
