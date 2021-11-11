@@ -51,14 +51,13 @@ const Search = (props) => {
   }
 
   return (
-    <div className="search">
+    <div className={props.className}>
       <Combobox onSelect={handleSelect}>
         <ComboboxInput
           value={value}
           onChange={handleInput}
           disabled={!ready}
           placeholder={props.placeholder}
-          style={props.style}
           maxLength={255}
         />
         <ComboboxPopover style={{ zIndex: '12' }}>
