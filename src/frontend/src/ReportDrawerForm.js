@@ -177,12 +177,7 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
                 setLng={setLng}
                 setPlaceId={setPlaceId}
                 placeholder={'Please enter your address'}
-                style={{
-                  maxHeight: '32px',
-                  fontSize: '15px',
-                  top: '-16px',
-                  position: 'relative'
-                }}
+                className={'drawerSearch'}
               />
             </Form.Item>
           </Col>

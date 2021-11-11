@@ -1,6 +1,6 @@
 export const libraries = ['places']
 export const mapContainerStyle = {
-  height: '100vh',
+  height: '85vh',
   width: '100vw'
 }
 export const options = {

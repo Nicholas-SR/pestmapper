@@ -6,16 +6,17 @@ body {
 
 .btn {
   color: #ffffff;
-  font-size: 25px;
+  font-size: 35px;
   background: #ff5e45;
-  padding: 10px 25px; 
+  padding: 10px 25px;
   border: none;
   text-decoration: none;
   z-index: 11;
-  margin-top: 15px;
+  margin-top: 5px;
+  margin-right: 10px;
   float: right;
   font-family: 'Open Sans Condensed', sans-serif;
-  display:inline;
+  display: inline;
 }
 
 .btn:hover {
@@ -23,28 +24,25 @@ body {
   text-decoration: none;
 }
 
-
-
 .header {
   overflow: hidden;
   background-color: white;
   border-bottom: 8px solid #ff5e45;
   padding: 25px 10px;
+  height: 15vh;
 }
 
-
-
-.header a, .header img{
+.header a,
+.header img {
   float: left;
   color: #ff5e45;
   text-align: center;
   padding: 12px;
   text-decoration: none;
-  font-size: 18px; 
+  font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
 }
-
 
 .header a.logo {
   font-size: 45px;
@@ -58,18 +56,23 @@ body {
   margin-top: 25px;
 }
 
-.search {
+.headerSearch {
   max-width: 500px;
   margin-top: 10px;
   z-index: 10;
   display: inline;
   max-height: 32px;
-  font-size: 15px;
   top: 35px;
   position: absolute;
+  left: 710px;
+  /* right: 0;
+  marginLeft: auto;
+  marginRight: auto; */
+  width: 100%;
+  color: #ff5e45;
 }
 
-.search input {
+.headerSearch input {
   padding: 0.5rem;
   font-size: 1.5rem;
   width: 100%;
@@ -79,14 +82,25 @@ body {
   text-align: center;
 }
 
+.drawerSearch {
+  width: '100%';
+}
+
+.drawerSearch input {
+  padding: 6px;
+  width: 100%;
+  font-size: 14px;
+}
 
 @media screen and (max-width: 500px) {
-  .header a, .btn, .search, .header img{
+  .header a,
+  .btn,
+  .search,
+  .header img {
     float: none;
     display: block;
     text-align: left;
   }
-
   .search {
     width: 100%;
     margin-top: 10px;
@@ -95,5 +109,3 @@ body {
     width: 100%;
   }
 }
-
-

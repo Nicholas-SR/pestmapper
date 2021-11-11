@@ -90,6 +90,7 @@ function App() {
     })
   }
 
+  // can it pop up onHover
   const markerClickHandler = (event, marker) => {
     if (mapRef.current.zoom < 14) {
       mapRef.current.setZoom(14)
@@ -103,6 +104,7 @@ function App() {
   useEffect(() => {
     console.log('start fetch')
     fetchReports()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -116,7 +118,7 @@ function App() {
 
   return (
     <div>
-      <div class="header">
+      <div className="header">
         <img
           src={'/logo.svg'}
           alt="Logo"
@@ -125,8 +127,7 @@ function App() {
             padding: '0px'
           }}
         />
-
-        <a href="#default" class="logo">
+        <a href="#default" className="logo">
           Pest <br />
           Mapper
         </a>
@@ -140,7 +141,11 @@ function App() {
           About
         </a>
 
-        <Search panTo={panTo} placeholder={'Search City or Address'} />
+        <Search
+          panTo={panTo}
+          placeholder={'Search City or Address'}
+          className={'headerSearch'}
+        />
 
         <button className="btn" onClick={() => setShowDrawer(!showDrawer)}>
           Report Pest
