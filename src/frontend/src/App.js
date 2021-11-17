@@ -1,3 +1,5 @@
+//add ability for users to upload images of infestations
+
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import { getAllReports } from './client'
 import { errorNotification } from './Notification'
@@ -13,6 +15,8 @@ import '@reach/combobox/styles.css'
 import { libraries, mapContainerStyle, options, center } from './mapStyles.js'
 import './App.css'
 import Search from './Search'
+
+
 
 function App() {
   const [reportsData, setReportsData] = useState([])
@@ -128,7 +132,7 @@ function App() {
           }}
         />
         <a href="#default" className="logo">
-          Pest <br />
+          Pest <br/>
           Mapper
         </a>
         <a className="pages" href="#map">
@@ -143,7 +147,7 @@ function App() {
 
         <Search
           panTo={panTo}
-          placeholder={'Search City or Address'}
+          placeholder={'Search City Or Address'}
           className={'headerSearch'}
         />
 
@@ -156,6 +160,7 @@ function App() {
         showDrawer={showDrawer}
         setShowDrawer={setShowDrawer}
         fetchReports={fetchReports}
+        style={{ zIndex: '12' }}
       />
 
       <GoogleMap

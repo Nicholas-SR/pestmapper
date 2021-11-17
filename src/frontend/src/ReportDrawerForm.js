@@ -1,9 +1,25 @@
-import { Drawer, Input, Col, Select, Form, Row, Button, Spin } from 'antd'
+import { Input, Col, Form, Row, Spin } from 'antd'
 import { addNewReport } from './client'
 import { LoadingOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import { successNotification, errorNotification } from './Notification'
 import Search from './Search'
+
+
+/* 🐜 ---------------------------------------- 🐜 ---------------------------------------- 🐜 */
+// MATERIALUI IMPORTS
+
+import ReactDOM from 'react-dom';
+import Drawer from '@material-ui/core/Drawer';
+import Box from '@material-ui/core/Box';
+import TextField from '@material-ui/core/TextField';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Slider from '@material-ui/core/Slider';
+import Button from '@material-ui/core/Button';
 
 const { Option } = Select
 
@@ -55,13 +71,183 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
   }
 
   return (
-    <Drawer
-      title="Create new report"
-      width={720}
-      onClose={onClose}
-      visible={showDrawer}
-      bodyStyle={{ paddingBottom: 80 }}
-      style={{ zIndex: '11' }}
+
+      <Drawer
+        anchor={'right'}
+        open={showDrawer}
+        onClose={onClose}
+        style={{ zIndex: '11'}}
+      >
+
+        <div className="drawertitle">
+          Report Pest
+        </div>
+
+        <Box
+          component="form"
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: '2fr 2fr',
+            gridTemplateAreas: 
+            `'formcontrol formcontrol'
+             'nameinput emailinput'
+             'drawerSearch drawerSearch'
+             'infestationtype infestationtype'
+             'infestationseverity infestationseverity'
+             'comment comment'
+             'submitbutton submitbutton'`,
+            gridRowGap: '40px',
+            gap: '40px'
+
+          }}
+          autoComplete="off"
+        >
+        <FormControl
+          className="formcontrol"
+          // onFinishFailed={onFinishFailed}
+          onSubmit={onFinish}
+          fields={[
+            {
+              name: ['address'],
+              value: address
+            },
+            {
+              name: ['placeId'],
+              value: placeId
+            },
+            {
+              name: ['lat'],
+              value: lat
+            },
+            {
+              name: ['lng'],
+              value: lng
+            },
+            {
+              name: ['day'],
+              value: date.getDate()
+            },
+            {
+              name: ['month'],
+              value: date.getMonth()
+            },
+            {
+              name: ['year'],
+              value: date.getFullYear()
+            }
+          ]}
+        >
+
+        </FormControl>
+
+            <TextField
+              required
+              className="nameinput"
+              id="standard-basic" 
+              name="name" 
+              label="Name" 
+              variant="standard"
+              inputProps={{maxLength:255}}
+            />
+
+            <TextField
+              required
+              className="emailinput"
+              id="standard-basic" 
+              name="email" 
+              label="Email" 
+              variant="standard"
+              inputProps={{maxLength:255}}
+            />
+
+            <Search
+              required
+              name="address"
+              className="drawerSearch"
+              id="standard-basic" 
+              label="Address" 
+              variant="standard"
+
+              setAddress={setAddress}
+              setLat={setLat}
+              setLng={setLng}
+              setPlaceId={setPlaceId}
+              placeholder={'Address'}
+            />
+
+            <div className="infestationtype">
+              <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                Infestation Type
+              </InputLabel>
+              <Select
+                required
+                name="bug"
+                label="Infestation Type"
+                id="infestationtype"
+                style={{minWidth: '100%'}}
+              >
+
+                <MenuItem value="BEDBUG">Bedbugs</MenuItem>
+                <MenuItem value="COCKROACH">Cockroaches</MenuItem>
+                <MenuItem value="MICE">Mice</MenuItem>
+                <MenuItem value="RATS">Rats</MenuItem>
+                <MenuItem value="OTHER">Other</MenuItem>
+              </Select>
+              <FormHelperText>What kind of pest?</FormHelperText>
+            </div>
+
+            <div className="infestationseverity">
+            <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                Infestation Severity
+            </InputLabel>
+            <Slider
+              defaultValue={3}
+              aria-labelledby="discrete-slider"
+              valueLabelDisplay="auto"
+              step={1}
+              marks
+              min={1}
+              max={5}
+              id="infestationseverity"
+
+            ></Slider>
+            <FormHelperText>How bad is the infestation?</FormHelperText>
+
+            </div>
+
+
+            <TextField
+              required
+              className="comment"
+              label="Comments"
+              name="comment"
+              multiline
+              rows={6}
+              // defaultValue="Describe the Infestation"
+              variant="filled"
+              inputProps={{maxLength:2040}}
+            />
+
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="submitbutton"
+            >
+              Submit
+            </Button>
+            {/* </FormControl> */}
+
+        </Box>
+      </Drawer>
+
+
+    /* <Drawer
+    title="Create new report"
+    width={720}
+    onClose={onClose}
+    visible={showDrawer}
+    bodyStyle={{ paddingBottom: 80 }}
+    style={{ zIndex: '11' }}
     >
       <Form
         layout="vertical"
@@ -185,9 +371,10 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
         <Row gutter={16}>
           <Col span={24}>
             <Form.Item
+              style={{color: 'white'}}
               name="comment"
-              label="Comment"
-              rules={[{ required: true, message: 'Please enter a comment' }]}
+              label="Comments"
+              rules={[{ required: true, message: 'Describe the infestation' }]}
             >
               <TextArea
                 rows={4}
@@ -252,7 +439,7 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
         </Row>
         <Row>{submitting && <Spin indicator={antIcon} />}</Row>
       </Form>
-    </Drawer>
+    </Drawer> */
   )
 }
 
