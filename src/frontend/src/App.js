@@ -13,6 +13,7 @@ import '@reach/combobox/styles.css'
 import { libraries, mapContainerStyle, options, center } from './mapStyles.js'
 import './App.css'
 import Search from './Search'
+import Report from './Report'
 
 function App() {
   const [reportsData, setReportsData] = useState([])
@@ -22,6 +23,7 @@ function App() {
   const [showDrawer, setShowDrawer] = useState(false)
   const [selectedPlace, setSelectedPlace] = useState(null)
   const [markerMap, setMarkerMap] = useState({})
+  const [currentMarkers, setCurrentMarkers] = useState([])
 
   const fetchReports = () => {
     getAllReports()
@@ -92,12 +94,14 @@ function App() {
 
   // can it pop up onHover
   const markerClickHandler = (event, marker) => {
+    findOtherMarkers(marker.address)
     if (mapRef.current.zoom < 14) {
       mapRef.current.setZoom(14)
       panTo({ lat: marker.lat, lng: marker.lng })
     }
     selected && setSelected(false)
     setSelectedPlace(marker)
+    
     setSelected(true)
   }
 
@@ -113,6 +117,30 @@ function App() {
     }
   }, [reports, reports.length, reportsData.length])
 
+  const findOtherMarkers = (address) =>{
+    setCurrentMarkers([])
+    var markers1 = []
+    for (var i=0; i<markers.length; i++){
+      if (markers[i].address === address){
+        
+        markers1.push(markers[i])
+      }
+    }
+    console.log("second")
+    console.log(markers1)
+    setCurrentMarkers(markers1)
+      
+  }
+
+  const shortenAddress = (address) => {
+    let splitaddress = address.split(',');
+    splitaddress.pop()
+    splitaddress.pop()
+    let shortaddress = splitaddress.join(',')
+    return shortaddress
+  }
+
+  
   if (loadError) return 'Error'
   if (!isLoaded) return 'Loading'
 
@@ -128,7 +156,7 @@ function App() {
           }}
         />
         <a href="#default" className="logo">
-          Pest <br />
+          Pest <br/>
           Mapper
         </a>
         <a className="pages" href="#map">
@@ -183,13 +211,29 @@ function App() {
 
         {selected && selectedPlace ? (
           <InfoWindow
+            id="infowindow"
             anchor={markerMap[selectedPlace.lat - selectedPlace.lng]}
             onCloseClick={() => {
               setSelected(null)
             }}
           >
-            <div>
-              <h3>{selectedPlace.address}</h3>
+
+            <div id="popup">
+
+
+            {/* <img 
+              src="./houseplaceholder.jpg"
+              width="20%"
+              className="addresspic"
+            /> */}
+            <div className="popupheader"><span className="popupaddress">{shortenAddress(selectedPlace.address)}</span></div>
+
+            {currentMarkers.map((reportdata) => {
+                return <Report reportdata={reportdata}></Report>
+            })}
+
+
+              {/* <div className="popuplinebreak"></div>
               <p>{moment(selectedPlace.date).format('MMMM d, YYYY')}</p>
 
               <p>Severity: {selectedPlace.score}/5</p>
@@ -203,7 +247,8 @@ function App() {
               </p>
               <p style={{ maxWidth: '400px' }}>
                 {selectedPlace.name}: {selectedPlace.comment}
-              </p>
+              </p> */}
+
             </div>
           </InfoWindow>
         ) : null}
@@ -213,3 +258,6 @@ function App() {
 }
 
 export default App
+
+
+

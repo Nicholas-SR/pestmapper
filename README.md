@@ -7,6 +7,4 @@
 
 * Built with: ReactJS, Java, Spring Boot, RESTful API, PostgreSQL, Amazon RDS.
 
-* Logo and Navigation Bar designed by [@mishmort](https://github.com/mishmort)
-
 ![gif](demo.gif)
