@@ -8,7 +8,7 @@ const Report = ({ reportdata }) => {
         <img src={"/invlogo.svg"} width="10%" />
 
         <div className="namedate">
-          {moment(reportdata.date).format("MMMM d, YYYY")}
+          {moment(reportdata.date).format("MMMM D, YYYY")}
           <br />
           <div className="name">{reportdata.name}</div>
         </div>
@@ -33,7 +33,6 @@ const Report = ({ reportdata }) => {
 
         <div className="reportseverity">
           <span className="subtitle">Severity: </span>
-
           <SeverityBar severityscore={reportdata.score}></SeverityBar>
         </div>
 
