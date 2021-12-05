@@ -1,4 +1,4 @@
-package com.example.demo.report.exception;
+package com.example.pestmapper.report.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

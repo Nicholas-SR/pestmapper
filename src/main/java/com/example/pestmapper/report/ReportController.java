@@ -1,4 +1,4 @@
-package com.example.demo.report;
+package com.example.pestmapper.report;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
