@@ -9,7 +9,7 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>pestmapper</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>PestMapper</name>
 	<description>Pest Mapper, made with Spring Boot and ReactJS</description>
@@ -103,19 +103,19 @@
 								</goals>
 								<phase>generate-resources</phase>
 							</execution>
-							<execution>
-								<id>yarn test</id>
-								<goals>
-									<goal>yarn</goal>
-								</goals>
-								<phase>test</phase>
-								<configuration>
-									<arguments>test</arguments>
-									<environmentVariables>
-										<CI>true</CI>
-									</environmentVariables>
-								</configuration>
-							</execution>
+<!--							<execution>-->
+<!--								<id>yarn test</id>-->
+<!--								<goals>-->
+<!--									<goal>yarn</goal>-->
+<!--								</goals>-->
+<!--								<phase>test</phase>-->
+<!--								<configuration>-->
+<!--									<arguments>test</arguments>-->
+<!--									<environmentVariables>-->
+<!--										<CI>true</CI>-->
+<!--									</environmentVariables>-->
+<!--								</configuration>-->
+<!--							</execution>-->
 							<execution>
 								<id>yarn build</id>
 								<goals>
