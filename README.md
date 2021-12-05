@@ -7,5 +7,4 @@
 
 * Built with: ReactJS, Java, Spring Boot, RESTful API, PostgreSQL, Amazon RDS.
 
-
 ![gif](demo.gif)

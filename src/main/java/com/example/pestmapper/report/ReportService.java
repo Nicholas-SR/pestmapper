@@ -1,7 +1,7 @@
-package com.example.demo.report;
+package com.example.pestmapper.report;
 
-import com.example.demo.report.exception.BadRequestException;
-import com.example.demo.report.exception.ReportNotFoundException;
+import com.example.pestmapper.report.exception.BadRequestException;
+import com.example.pestmapper.report.exception.ReportNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

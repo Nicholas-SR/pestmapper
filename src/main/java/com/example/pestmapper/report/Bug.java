@@ -1,4 +1,4 @@
-package com.example.demo.report;
+package com.example.pestmapper.report;
 
 public enum Bug {
     BEDBUG,
