@@ -1,50 +1,50 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react'
-import { getAllReports } from './client'
-import { errorNotification } from './Notification'
-import ReportDrawerForm from './ReportDrawerForm'
-import moment from 'moment'
+import React, { useState, useCallback, useRef, useEffect } from "react";
+import { getAllReports } from "./client";
+import { errorNotification } from "./Notification";
+import ReportDrawerForm from "./ReportDrawerForm";
+import moment from "moment";
 import {
   GoogleMap,
   useLoadScript,
   Marker,
-  InfoWindow
-} from '@react-google-maps/api'
-import '@reach/combobox/styles.css'
-import { libraries, mapContainerStyle, options, center } from './mapStyles.js'
-import './App.css'
-import Search from './Search'
-import Report from './Report'
+  InfoWindow,
+} from "@react-google-maps/api";
+import "@reach/combobox/styles.css";
+import { libraries, mapContainerStyle, options, center } from "./mapStyles.js";
+import "./App.css";
+import Search from "./Search";
+import Report from "./Report";
 
 function App() {
-  const [reportsData, setReportsData] = useState([])
-  const [markers, setMarkers] = useState([])
-  const [selected, setSelected] = useState(null)
-  const [reports, setReports] = useState([])
-  const [showDrawer, setShowDrawer] = useState(false)
-  const [selectedPlace, setSelectedPlace] = useState(null)
-  const [markerMap, setMarkerMap] = useState({})
-  const [currentMarkers, setCurrentMarkers] = useState([])
+  const [reportsData, setReportsData] = useState([]);
+  const [markers, setMarkers] = useState([]);
+  const [selected, setSelected] = useState(null);
+  const [reports, setReports] = useState([]);
+  const [showDrawer, setShowDrawer] = useState(false);
+  const [selectedPlace, setSelectedPlace] = useState(null);
+  const [markerMap, setMarkerMap] = useState({});
+  const [currentMarkers, setCurrentMarkers] = useState([]);
 
   const fetchReports = () => {
     getAllReports()
       .then((res) => res.json())
       .then((data) => {
-        console.log('fetch complete')
-        console.log(data)
-        setReportsData(data)
-        parseGet(data)
+        console.log("fetch complete");
+        console.log(data);
+        setReportsData(data);
+        parseGet(data);
       })
       .catch((err) => {
-        console.log(err.response)
+        console.log(err.response);
         err.response.json().then((res) => {
-          console.log(res)
+          console.log(res);
           errorNotification(
-            'There was an issue',
+            "There was an issue",
             `${res.message} [${res.status}] [${res.error}]`
-          )
-        })
-      })
-  }
+          );
+        });
+      });
+  };
 
   const parseGet = (reportsData) => {
     for (let i = 0; i < reportsData.length; i++) {
@@ -64,99 +64,96 @@ function App() {
             reportsData[i].year,
             reportsData[i].month,
             reportsData[i].day
-          )
-        }
-      ])
+          ),
+        },
+      ]);
     }
-  }
+  };
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    libraries
-  })
+    libraries,
+  });
 
-  const mapRef = useRef()
+  const mapRef = useRef();
 
   const onMapLoad = useCallback((map) => {
-    mapRef.current = map
-  }, [])
+    mapRef.current = map;
+  }, []);
 
   const panTo = useCallback(({ lat, lng }) => {
-    mapRef.current.panTo({ lat, lng })
-    mapRef.current.setZoom(14)
-  }, [])
+    mapRef.current.panTo({ lat, lng });
+    mapRef.current.setZoom(14);
+  }, []);
 
   const markerLoadHandler = (m, marker) => {
     return setMarkerMap((prevState) => {
-      return { ...prevState, [marker.lat - marker.lng]: m }
-    })
-  }
+      return { ...prevState, [marker.lat - marker.lng]: m };
+    });
+  };
 
   // can it pop up onHover
   const markerClickHandler = (event, marker) => {
-    findOtherMarkers(marker.address)
+    findOtherMarkers(marker.address);
     if (mapRef.current.zoom < 14) {
-      mapRef.current.setZoom(14)
-      panTo({ lat: marker.lat, lng: marker.lng })
+      mapRef.current.setZoom(14);
+      panTo({ lat: marker.lat, lng: marker.lng });
     }
-    selected && setSelected(false)
-    setSelectedPlace(marker)
-    
-    setSelected(true)
-  }
+    selected && setSelected(false);
+    setSelectedPlace(marker);
+
+    setSelected(true);
+  };
 
   useEffect(() => {
-    console.log('start fetch')
-    fetchReports()
+    console.log("start fetch");
+    fetchReports();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (reports.length === reportsData.length && reports.length) {
-      setMarkers((current) => [...reports])
+      setMarkers((current) => [...reports]);
     }
-  }, [reports, reports.length, reportsData.length])
+  }, [reports, reports.length, reportsData.length]);
 
-  const findOtherMarkers = (address) =>{
-    setCurrentMarkers([])
-    var markers1 = []
-    for (var i=0; i<markers.length; i++){
-      if (markers[i].address === address){
-        
-        markers1.push(markers[i])
+  const findOtherMarkers = (address) => {
+    setCurrentMarkers([]);
+    var markers1 = [];
+    for (var i = 0; i < markers.length; i++) {
+      if (markers[i].address === address) {
+        markers1.push(markers[i]);
       }
     }
-    console.log("second")
-    console.log(markers1)
-    setCurrentMarkers(markers1)
-      
-  }
+    console.log("second");
+    console.log(markers1);
+    setCurrentMarkers(markers1);
+  };
 
   const shortenAddress = (address) => {
-    let splitaddress = address.split(',');
-    splitaddress.pop()
-    splitaddress.pop()
-    let shortaddress = splitaddress.join(',')
-    return shortaddress
-  }
+    let splitaddress = address.split(",");
+    splitaddress.pop();
+    splitaddress.pop();
+    let shortaddress = splitaddress.join(",");
+    return shortaddress;
+  };
 
-  
-  if (loadError) return 'Error'
-  if (!isLoaded) return 'Loading'
+  if (loadError) return "Error";
+  if (!isLoaded) return "Loading";
 
   return (
     <div>
       <div className="header">
         <img
-          src={'/logo.svg'}
+          src={"/logo.svg"}
           alt="Logo"
           style={{
-            width: '90px',
-            padding: '0px'
+            width: "90px",
+            padding: "0px",
           }}
         />
         <a href="#default" className="logo">
-          Pest <br/>
+          Pest <br />
           Mapper
         </a>
         <a className="pages" href="#map">
@@ -171,8 +168,8 @@ function App() {
 
         <Search
           panTo={panTo}
-          placeholder={'Search City or Address'}
-          className={'headerSearch'}
+          placeholder={"Search City or Address"}
+          className={"headerSearch"}
         />
 
         <button className="btn" onClick={() => setShowDrawer(!showDrawer)}>
@@ -204,7 +201,7 @@ function App() {
             icon={{
               url: `/mapmarkericon.svg`,
               origin: new window.google.maps.Point(0, 0),
-              scaledSize: new window.google.maps.Size(30, 30)
+              scaledSize: new window.google.maps.Size(30, 30),
             }}
           ></Marker>
         ))}
@@ -214,50 +211,30 @@ function App() {
             id="infowindow"
             anchor={markerMap[selectedPlace.lat - selectedPlace.lng]}
             onCloseClick={() => {
-              setSelected(null)
+              setSelected(null);
             }}
           >
-
             <div id="popup">
-
-
-            {/* <img 
+              {/* <img 
               src="./houseplaceholder.jpg"
               width="20%"
               className="addresspic"
             /> */}
-            <div className="popupheader"><span className="popupaddress">{shortenAddress(selectedPlace.address)}</span></div>
+              <div className="popupheader">
+                <span className="popupaddress">
+                  {shortenAddress(selectedPlace.address)}
+                </span>
+              </div>
 
-            {currentMarkers.map((reportdata) => {
-                return <Report reportdata={reportdata}></Report>
-            })}
-
-
-              {/* <div className="popuplinebreak"></div>
-              <p>{moment(selectedPlace.date).format('MMMM d, YYYY')}</p>
-
-              <p>Severity: {selectedPlace.score}/5</p>
-              <p>
-                Bug Type:{' '}
-                {selectedPlace.bug !== 'BOTH'
-                  ? selectedPlace.bug === 'BEDBUG'
-                    ? 'Bedbugs'
-                    : 'Cockroaches'
-                  : 'Bedbugs & Cockroaches'}
-              </p>
-              <p style={{ maxWidth: '400px' }}>
-                {selectedPlace.name}: {selectedPlace.comment}
-              </p> */}
-
+              {currentMarkers.map((reportdata) => {
+                return <Report reportdata={reportdata}></Report>;
+              })}
             </div>
           </InfoWindow>
         ) : null}
       </GoogleMap>
     </div>
-  )
+  );
 }
 
-export default App
-
-
-
+export default App;

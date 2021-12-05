@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap");
 
 body {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
 }
 
 .btn {
@@ -15,7 +15,7 @@ body {
   margin-top: 5px;
   margin-right: 10px;
   float: right;
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
   display: inline;
 }
 
@@ -80,7 +80,7 @@ body {
 }
 
 .drawerSearch {
-  width: '100%';
+  width: "100%";
 }
 
 .drawerSearch input {
@@ -110,55 +110,60 @@ body {
 /* 🐜 ---------------------------- 🐜 ---------------------------- 🐜 ---------------------------- */
 /* GOOGLE INFOWINDOW STYLING */
 
-.gm-style-iw, .gm-style-iw-c, .gm-style-iw-d {
+.gm-style-iw,
+.gm-style-iw-c,
+.gm-style-iw-d {
   background-color: #ff5e45 !important;
   border: none !important;
   border-radius: 0 !important;
   overflow-y: hidden !important;
   overflow-x: hidden !important;
-  /* box-shadow: none !important; */
 }
 
-.gm-style-iw, .gm-style-iw-c {
+.gm-style-iw,
+.gm-style-iw-c {
   padding-right: 0px !important;
 }
 
 div.gm-style-iw-d::after {
   background-color: #ff5e45 !important;
-  /* margin: 0px !important; */
 }
 
 /* this is the little triangle pointer thing */
 /* at the bottom of the infobox and above the marker */
 .gm-style .gm-style-iw-t::after {
-  background: linear-gradient(45deg,#ff5e45 50%,rgba(255,255,255,0) 51%,rgba(255,255,255,0) 100%) !important;
+  background: linear-gradient(
+    45deg,
+    #ff5e45 50%,
+    rgba(255, 255, 255, 0) 51%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
   background-color: #ff5e45 !important;
 }
 
-
 /* POPUP STYLING */
 #popup {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
   color: white;
   max-height: 600px;
   overflow-y: scroll;
   padding-top: 75px;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
 #popup::-webkit-scrollbar {
-  width: 15px;               /* width of the entire scrollbar */
+  width: 15px; /* width of the entire scrollbar */
 }
 
 #popup::-webkit-scrollbar-track {
-  background: #ff5e45;        /* color of the tracking area */
+  background: #ff5e45; /* color of the tracking area */
 }
 
 #popup::-webkit-scrollbar-thumb {
-  background-color: #ebebeb7a;    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 5px solid #ff5e45;  /* creates padding around scroll thumb */
+  background-color: #ebebeb7a; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 5px solid #ff5e45; /* creates padding around scroll thumb */
 }
 
 .popupheader {
@@ -182,56 +187,55 @@ div.gm-style-iw-d::after {
 }
 
 .popupheader::after {
-  content: '';
+  content: "";
   width: 100%;
   height: 8px;
   left: 0;
   top: 80px;
-  background:white;
+  background: white;
   position: absolute;
   display: block;
 }
 
 .popuplinebreak {
-  width: 100%; 
-  height: 8px; 
+  width: 100%;
+  height: 8px;
   background-color: white;
   position: absolute;
   left: 0;
 }
 
+/* 🐜 ---------------------------- 🐜 ---------------------------- 🐜 ---------------------------- */
 /* REPORT STYLING */
-
 .report {
   width: 100%;
   margin: 10px 0px;
   margin-left: 0px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   padding: 10px;
   background-color: #d84d37;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-
 .logonamedate {
-  display: flex; 
+  display: flex;
   flex-direction: row;
   align-items: center;
 }
 
 .linebreak {
   width: 611px;
-  height: 1px; 
+  height: 1px;
   margin-top: 10px;
-  display:block;
+  display: block;
   position: relative;
 }
 
 .line {
   width: 100%;
-  height: 1px; 
+  height: 1px;
   margin-left: -6px;
   position: absolute;
   background-color: white;
@@ -248,7 +252,7 @@ div.gm-style-iw-d::after {
 }
 
 .reportcommentwrapper {
-  color:rgb(116, 116, 116);
+  color: rgb(116, 116, 116);
   background-color: white;
   padding: 10px;
   width: 100%;
@@ -257,16 +261,16 @@ div.gm-style-iw-d::after {
   overflow-wrap: break-word;
 }
 
-
 .infestationtype {
   margin-top: 5px;
 }
 
+/* 🐜 ---------------------------- 🐜 ---------------------------- 🐜 ---------------------------- */
 /* SEVERITY BAR */
 .severitybar {
   width: 100%;
   height: 20px;
-  background-color:white;
+  background-color: white;
   border: 1px solid white;
   margin: 10px 0px;
   margin-bottom: 10px;
@@ -285,7 +289,9 @@ div.gm-style-iw-d::after {
   position: relative;
 }
 
-.mildseverity, .moderateseverity, .severeseverity {
+.mildseverity,
+.moderateseverity,
+.severeseverity {
   width: 1px;
   height: 20px;
   display: inline;
@@ -294,15 +300,14 @@ div.gm-style-iw-d::after {
   top: 0px;
 }
 
-
 .mildseverity {
   margin-left: 33%;
 }
 
 .mildseverity::after {
-  content:"mild";
-  color:white;
-  display:block;
+  content: "mild";
+  color: white;
+  display: block;
   margin-left: -30px;
 }
 
@@ -311,8 +316,8 @@ div.gm-style-iw-d::after {
 }
 
 .moderateseverity::after {
-  content:"moderate";
-  color:white;
+  content: "moderate";
+  color: white;
   margin-left: -55px;
   display: block;
 }
@@ -322,11 +327,8 @@ div.gm-style-iw-d::after {
 }
 
 .severeseverity::after {
-  content:"severe";
-  color:white;
-  display:block;
+  content: "severe";
+  color: white;
+  display: block;
   margin-left: -40px;
 }
-
-
-
