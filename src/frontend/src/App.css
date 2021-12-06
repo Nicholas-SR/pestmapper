@@ -269,6 +269,7 @@ div.gm-style-iw-d::after {
   height: 75px;
   margin-top: 10px;
   overflow-wrap: break-word;
+  overflow-y: auto;
 }
 
 .infestationtype {
