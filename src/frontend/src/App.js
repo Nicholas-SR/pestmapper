@@ -64,7 +64,8 @@ function App() {
             reportsData[i].year,
             reportsData[i].month,
             reportsData[i].day
-          )
+          ),
+          placeId: reportsData[i].placeId
         }
       ])
     }
@@ -94,7 +95,7 @@ function App() {
 
   // can it pop up onHover
   const markerClickHandler = (event, marker) => {
-    findOtherMarkers(marker.address)
+    findOtherMarkers(marker.placeId)
     if (mapRef.current.zoom < 14) {
       mapRef.current.setZoom(14)
       panTo({ lat: marker.lat, lng: marker.lng })
@@ -117,11 +118,11 @@ function App() {
     }
   }, [reports, reports.length, reportsData.length])
 
-  const findOtherMarkers = (address) => {
+  const findOtherMarkers = (placeId) => {
     setCurrentMarkers([])
     var markers1 = []
     for (var i = markers.length - 1; i >= 0; i--) {
-      if (markers[i].address === address) {
+      if (markers[i].placeId === placeId) {
         markers1.push(markers[i])
       }
     }
