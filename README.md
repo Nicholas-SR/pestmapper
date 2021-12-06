@@ -12,4 +12,4 @@
 
 * Built with: ReactJS, Java, Spring Boot, RESTful API, PostgreSQL, Amazon RDS, AWS Elastic Beanstalk.
 
-
+![gif](demo.gif)
