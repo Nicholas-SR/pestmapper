@@ -120,13 +120,11 @@ function App() {
   const findOtherMarkers = (address) => {
     setCurrentMarkers([])
     var markers1 = []
-    for (var i = 0; i < markers.length; i++) {
+    for (var i = markers.length - 1; i >= 0; i--) {
       if (markers[i].address === address) {
         markers1.push(markers[i])
       }
     }
-    console.log('second')
-    console.log(markers1)
     setCurrentMarkers(markers1)
   }
 
