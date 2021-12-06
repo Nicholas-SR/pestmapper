@@ -143,7 +143,7 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
                 }
               ]}
             >
-              <Select placeholder="Please select the infestation type">
+              <Select placeholder="Select Type">
                 <Option value="BEDBUG">Bedbugs</Option>
                 <Option value="COCKROACH">Cockroaches</Option>
                 <Option value="BOTH">Bedbugs & Cockroaches</Option>
@@ -161,7 +161,7 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
                 }
               ]}
             >
-              <Select placeholder="Please select the severity of the infestation">
+              <Select placeholder="Select Severity">
                 <Option value="1">Mild</Option>
                 <Option value="2">Moderate</Option>
                 <Option value="3">Severe</Option>
@@ -228,8 +228,9 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
                 type="primary"
                 style={{
                   backgroundColor: '#FF5E45',
-                  fontSize: '18px',
-                  height: '50px'
+                  fontSize: '28px',
+                  height: '70px',
+                  width: '150px'
                 }}
                 htmlType="submit"
               >
