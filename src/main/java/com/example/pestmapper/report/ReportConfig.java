@@ -13,7 +13,6 @@ public class ReportConfig {
         return args -> {
             Report report1 = new Report(
                     "Maria Garcia",
-                    "mgarcia@gmail.com",
                     "145 Queen St S, Hamilton, ON, Canada",
                     "ChIJWzlCy3CbLIgRjNiNNgl16rI",
                     43.2546596d,
@@ -22,12 +21,11 @@ public class ReportConfig {
                     3,
                     10,
                     2021,
-                    5,
+                    1,
                     Bug.BEDBUG
             );
             Report report2 = new Report(
                     "Omar Aziz",
-                    "omar.aziz@outlook.com",
                     "160 Market St, Hamilton, ON L8R 3J6, Canada",
                     "ChIJtRSo0HibLIgRJqKqFyRZ6YY",
                     43.2600023d,
@@ -36,12 +34,11 @@ public class ReportConfig {
                     2,
                     3,
                     2021,
-                    4,
+                    2,
                     Bug.BEDBUG
             );
             Report report3 = new Report(
                     "Mike Miller",
-                    "mike.miller@outlook.com",
                     "192 Hughson St. N, Hamilton, ON, Canada",
                     "ChIJ5ZFgNoabLIgRVkMbLjHRLGc",
                     43.2615571d,
@@ -50,7 +47,7 @@ public class ReportConfig {
                     2,
                     6,
                     2021,
-                    5,
+                    3,
                     Bug.BOTH
             );
             // Uncomment below to add fake users to the table

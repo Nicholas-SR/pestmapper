@@ -18,12 +18,6 @@ public class ReportService {
     }
 
     public void addReport(Report report) {
-        Boolean existsEmail = reportRepository
-                .selectExistsEmail(report.getEmail());
-        if (existsEmail) {
-            throw new BadRequestException(
-                    "Email " + report.getEmail() + " already exists in the table!");
-        }
         reportRepository.save(report);
     }
 
