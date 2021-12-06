@@ -1,18 +1,10 @@
 const SeverityBar = ({ severityscore }) => {
   const severitystyle = {
     width:
-      (severityscore === 1) | (severityscore === 2)
-        ? "33%"
-        : (severityscore === 3) | (severityscore === 4)
-        ? "66%"
-        : "100%",
+      (severityscore === 1) ? "33%" : (severityscore === 2) ? "66%" : "100%",
     height: "100%",
     backgroundColor:
-      (severityscore === 1) | (severityscore === 2)
-        ? "#FFD527"
-        : (severityscore === 3) | (severityscore === 4)
-        ? "#FF7C33"
-        : "#FF5E45",
+      (severityscore === 1) ? "#fae319" : (severityscore === 2) ? "#fac619" : "#fa9819",
   };
 
   return (
