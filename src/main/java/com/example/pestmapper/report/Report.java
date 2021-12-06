@@ -6,7 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
 
 @ToString
@@ -31,9 +30,6 @@ public class Report {
     @NotBlank
     @Column(nullable = false)
     private String name;
-    @Email
-    @Column(nullable = false, unique = true) // to prevent the same user from filing many reports add: unique = true
-    private String email;
     @NotBlank
     @Column(nullable = false)
     private String address;
@@ -66,10 +62,9 @@ public class Report {
     @Column(nullable = false, columnDefinition = "VARCHAR(50)")
     private Bug bug;
 
-    public Report(String name, String email, String address, String placeId, Double lat, Double lng, String comment, Integer day, Integer month, Integer year, Integer score, Bug bug) {
+    public Report(String name, String address, String placeId, Double lat, Double lng, String comment, Integer day, Integer month, Integer year, Integer score, Bug bug) {
         // could add postal code as well
         this.name = name;
-        this.email = email;
         this.address = address;
         this.placeId = placeId;
         this.lat = lat;
