@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap');
 
 body {
-  font-family: "Open Sans Condensed", sans-serif;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .btn {
@@ -15,7 +15,7 @@ body {
   margin-top: 5px;
   margin-right: 10px;
   float: right;
-  font-family: "Open Sans Condensed", sans-serif;
+  font-family: 'Open Sans Condensed', sans-serif;
   display: inline;
 }
 
@@ -80,7 +80,7 @@ body {
 }
 
 .drawerSearch {
-  width: "100%";
+  width: '100%';
 }
 
 .drawerSearch input {
@@ -143,10 +143,11 @@ div.gm-style-iw-d::after {
 
 /* POPUP STYLING */
 #popup {
-  font-family: "Open Sans Condensed", sans-serif;
+  font-family: 'Open Sans Condensed', sans-serif;
   color: white;
   max-height: 600px;
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding-top: 75px;
   display: flex;
   flex-direction: column;
@@ -184,10 +185,11 @@ div.gm-style-iw-d::after {
   padding-left: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
+  margin-left: 70px;
 }
 
 .popupheader::after {
-  content: "";
+  content: '';
   width: 100%;
   height: 8px;
   left: 0;
@@ -203,6 +205,14 @@ div.gm-style-iw-d::after {
   background-color: white;
   position: absolute;
   left: 0;
+}
+
+.addresspic {
+  border-radius: 50%;
+  height: 70px;
+  position: absolute;
+  left: 10px;
+  top: 5px;
 }
 
 /* 🐜 ---------------------------- 🐜 ---------------------------- 🐜 ---------------------------- */
@@ -305,8 +315,8 @@ div.gm-style-iw-d::after {
 }
 
 .mildseverity::after {
-  content: "mild";
-  color: white;
+  content: 'mild';
+  color: #747474;
   display: block;
   margin-left: -30px;
 }
@@ -316,8 +326,8 @@ div.gm-style-iw-d::after {
 }
 
 .moderateseverity::after {
-  content: "moderate";
-  color: white;
+  content: 'moderate';
+  color: #747474;
   margin-left: -55px;
   display: block;
 }
@@ -327,8 +337,8 @@ div.gm-style-iw-d::after {
 }
 
 .severeseverity::after {
-  content: "severe";
-  color: white;
+  content: 'severe';
+  color: #747474;
   display: block;
   margin-left: -40px;
 }

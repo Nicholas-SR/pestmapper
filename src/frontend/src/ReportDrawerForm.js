@@ -111,11 +111,23 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
           </Col>
           <Col span={12}>
             <Form.Item
-              name="email"
-              label="Email"
-              rules={[{ required: true, message: 'Please enter your email' }]}
+              name="address"
+              label="Address"
+              rules={[
+                {
+                  required: true,
+                  message: 'You must select an address from the drop down list'
+                }
+              ]}
             >
-              <Input placeholder="Please enter your email" maxLength={255} />
+              <Search
+                setAddress={setAddress}
+                setLat={setLat}
+                setLng={setLng}
+                setPlaceId={setPlaceId}
+                placeholder={'Please enter your address'}
+                className={'drawerSearch'}
+              />
             </Form.Item>
           </Col>
         </Row>
@@ -141,7 +153,7 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
           <Col span={12}>
             <Form.Item
               name="score"
-              label="Infestation Severity (5 is most severe)"
+              label="Infestation Severity"
               rules={[
                 {
                   required: true,
@@ -150,38 +162,14 @@ const ReportDrawerForm = ({ showDrawer, setShowDrawer, fetchReports }) => {
               ]}
             >
               <Select placeholder="Please select the severity of the infestation">
-                <Option value="1">1</Option>
-                <Option value="2">2</Option>
-                <Option value="3">3</Option>
-                <Option value="4">4</Option>
-                <Option value="5">5</Option>
+                <Option value="1">Mild</Option>
+                <Option value="2">Moderate</Option>
+                <Option value="3">Severe</Option>
               </Select>
             </Form.Item>
           </Col>
         </Row>
-        <Row gutter={16}>
-          <Col span={12}>
-            <Form.Item
-              name="address"
-              label="Address"
-              rules={[
-                {
-                  required: true,
-                  message: 'You must select an address from the drop down list'
-                }
-              ]}
-            >
-              <Search
-                setAddress={setAddress}
-                setLat={setLat}
-                setLng={setLng}
-                setPlaceId={setPlaceId}
-                placeholder={'Please enter your address'}
-                className={'drawerSearch'}
-              />
-            </Form.Item>
-          </Col>
-        </Row>
+
         <Row gutter={16}>
           <Col span={24}>
             <Form.Item
