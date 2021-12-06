@@ -2,7 +2,7 @@
 
 * Click [here](http://pestmapper-env.eba-2ypfqjyc.us-east-2.elasticbeanstalk.com/) to access the Pest Mapper site
 
-* An online platform where building occupants can report pest incidents to warn prospective tenants.
+* An online platform where building occupants can report pests in their building to warn prospective tenants.
 
 * Reports are plotted on an interactive map created with the Google Maps API.
 
