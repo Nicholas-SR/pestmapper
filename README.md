@@ -8,7 +8,7 @@
 
 * Hosted with AWS Elastic Beanstalk
 
-* RESTful API built with Spring Boot and PostgreSQL.
+* RESTful API built with Spring Boot.
 
 * Built with: ReactJS, Java, Spring Boot, RESTful API, PostgreSQL, Amazon RDS, AWS Elastic Beanstalk.
 
