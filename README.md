@@ -14,4 +14,4 @@
 
 * Done in collaboration with [@mishmort](https://github.com/mishmort)
 
-![gif](demo2.gif)
+![gif](demo3.gif)
