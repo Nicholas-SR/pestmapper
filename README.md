@@ -12,6 +12,6 @@
 
 * Built with: ReactJS, Java, Spring Boot, RESTful API, PostgreSQL, Amazon RDS, AWS Elastic Beanstalk.
 
-* Done in collaboration with @mishmort
+* Done in collaboration with [@mishmort](https://github.com/mishmort)
 
 ![gif](demo2.gif)
