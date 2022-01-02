@@ -2,7 +2,7 @@
 
 * Click [pestmapper.app](http://pestmapper.app/) to access the Pest Mapper site
 
-* An online platform where tenants can report pests in their building to warn other prospective tenants.
+* A platform where tenants can report pests in their building to warn other prospective tenants.
 
 * Reports are plotted on an interactive map created with the Google Maps API.
 
