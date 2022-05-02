@@ -6,7 +6,7 @@
 
 * Reports are plotted on an interactive map created with the Google Maps API.
 
-* Hosted with AWS Elastic Beanstalk
+* Hosted with AWS Elastic Beanstalk.
 
 * RESTful API built with Spring Boot.
 
