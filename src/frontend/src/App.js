@@ -143,18 +143,16 @@ function App() {
   return (
     <div>
       <div className="header">
+        <>
         <img
           src={'/logo.svg'}
           alt="Logo"
-          style={{
-            width: '90px',
-            padding: '0px'
-          }}
         />
         <a href="#default" className="logo">
           Pest <br />
           Mapper
         </a>
+        </>
         <a className="pages" href="#map">
           Map
         </a>
