@@ -1,6 +1,6 @@
 # Pest Mapper
 
-* Click [pestmapper.app](http://pestmapper.app/) to access the Pest Mapper site
+* Click [here](http://pestmapper-env.eba-2ypfqjyc.us-east-2.elasticbeanstalk.com/) to access the PestMapper site
 
 * A platform where tenants can report pests in their building to warn other prospective tenants.
 
